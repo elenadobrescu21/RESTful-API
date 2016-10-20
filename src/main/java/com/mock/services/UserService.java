@@ -21,5 +21,13 @@ public class UserService {
 	public User getUserById(int id) {
 		return this.userDAO.getUser(id);
 	}
+	
+	public void addUser(User user) {
+		this.userDAO.addUser(user);
+	}
+	
+	public void deleteUser(int id) {
+		this.userDAO.deleteUser(id);
+	}
 
 }
