@@ -11,6 +11,10 @@ import javax.persistence.Query;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.mock.dao.UserDAO;
 import com.mock.entities.University;
@@ -20,7 +24,7 @@ import com.mock.entities.User;
 public class Main {
 
 	public static void main(String[] args) {
-		
+//		
 		SpringApplication.run(Main.class, args);
 //		
 //		  EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("mock");   
@@ -33,14 +37,24 @@ public class Main {
 //	      entitymanager.persist( firstUser);
 //	      entitymanager.getTransaction().commit();
 //	      List<User> users = new ArrayList<User>();
-//	      UserDAO userDAO = new UserDAO(entitymanager);
+//	      UserDAO userDAO = new UserDAO();
 //	      userDAO.getAllUsers();
 //	      userDAO.printAllUsers();
 //	   
 //	      entitymanager.close();
 //	      emfactory.close();
-//	      
-	      
+//	        
+	}
+	
+	@Bean
+	public WebMvcConfigurerAdapter corsConfigure() {
+		return new WebMvcConfigurerAdapter() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**/*").allowedOrigins("*");
+			}
+		};
+		
 	}
 
 }

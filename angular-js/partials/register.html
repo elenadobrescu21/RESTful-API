@@ -1,0 +1,47 @@
+<section class="main register-section2" ng-controller="registerController">
+    <div class="container">
+        <div class="text-center"><h1>Register</h1></div>
+
+        <form method="post" class="q-form" id="register" name="register">
+            <div class="form-group">
+                <label class="control-label" for="username">Username </label>
+                <input class="form-control" type="text" id="username" name="username" ng-model="fields.username" required>
+                <span  ng-show="register.username.$touched && register.username.$invalid" class="help-block">Please fill your username</span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label" for="email">Email </label>
+                <input  class="form-control" type="email" id="email" name="email" ng-model="fields.email" required>
+                <span  ng-show="register.email.$touched && register.email.$invalid" class="help-block">Please fill your email</span>
+            </div>
+			
+			 <div class="form-group">
+                <label  class="control-label" for="email">First Name </label>
+                <input  class="form-control" type="text" id="firstName" name="firstName" ng-model="fields.firstName" required>
+                <span  ng-show="register.email.$touched && register.email.$invalid" class="help-block">Please fill your first name</span>
+            </div>
+			
+			 <div class="form-group">
+                <label  class="control-label" for="email">Last Name </label>
+                <input  class="form-control" type="text" id="lastName" name="lastName" ng-model="fields.lastName" required>
+                <span  ng-show="register.email.$touched && register.email.$invalid" class="help-block">Please fill your last name</span>
+            </div>
+						
+            <div class="form-group">
+                <label  class="control-label" for="password">Password</label>
+                <input class="form-control" type="password" id="password" name="password" ng-model="fields.password" required>
+                <span  ng-show="register.password.$touched && register.password.$invalid" class="help-block">Please fill your password </span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label" for="confirm-password">Confirm Password</label>
+                <input class="form-control" type="password" id="confirm-password" ng-model="fields.confirmPassword" name="confirmPassword" match="fields.password" required>
+                <div ng-show="register.confirmPassword.$error.mismatch">
+                  <span class="help-block">Passwords must match.</span>
+                </div>
+            </div>
+            <div class="form-group pull-left">
+                <button class="btn btn-default" type="submit" name="submit" ng-click="createUser()">Create Account</button>
+            </div>
+
+        </form>
+    </div>
+</section>
